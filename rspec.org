@@ -1,13 +1,46 @@
+(require 'ob-sh)
+(require 'ob-ruby)
+
+
+
+* Create Class 
+#+BEGIN_SRC ruby :tangle sapphire.rb
+  class Sapphire
+    attr_reader :worth, :description 
+
+    def initialize
+      @worth = 3000
+      @description = "A beatuiful blue stone"
+    end
+    
+  end
+#+END_SRC
+
+
 * write spec file
 
-#+BEGIN_SRC ruby :tangle sample_spec.rb
-  RSpec.describe "something" do
-    it "does something" do
+#+BEGIN_SRC ruby :tangle sapphire_spec.rb
+  require "./sapphire.rb"
+
+  RSpec.describe Sapphire do
+    it "should have a worth param set at 3000" do
+      s = Sapphire.new
+      expect(s.worth).to eql(3000)
+    end
+
+    it "should have a description" do
+      s = Sapphire.new
+      expect(s.description).to be_a(String)
+    end
+
+    it "should take a size argument and adust worth according to a formula" do
+      s = Sapphire.new(:small)
+      expect(s.worth).to eql(1500)
     end
   end
 #+END_SRC
 
-* Tangle the file out
+* Tangle the files out
 
 C-c C-v t
 
@@ -19,7 +52,9 @@ or, cursor on the following line C-x C-e:
 
 Put the cursor on the block below and C-c C-c
 
-#+BEGIN_SRC sh :results output
-rspec sample_spec.rb -fdoc
+#+BEGIN_SRC sh
+rspec sapphire_spec.rb -fdoc
 #+END_SRC
+
+#+RESULTS:
 
