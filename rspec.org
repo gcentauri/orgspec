@@ -11,9 +11,9 @@
 
 C-c C-v t
 
-or
+or, cursor on the following line C-x C-e:
 
-(org-babel-tangle) cursor on this line C-x C-e
+(org-babel-tangle) 
 
 * use sh to call rspec on the tangled file
 
