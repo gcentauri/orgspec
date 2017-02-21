@@ -1,0 +1,25 @@
+* write spec file
+
+#+BEGIN_SRC ruby :tangle sample_spec.rb
+  RSpec.describe "something" do
+    it "does something" do
+    end
+  end
+#+END_SRC
+
+* Tangle the file out
+
+C-c C-v t
+
+or
+
+(org-babel-tangle) cursor on this line C-x C-e
+
+* use sh to call rspec on the tangled file
+
+Put the cursor on the block below and C-c C-c
+
+#+BEGIN_SRC sh :results output
+rspec sample_spec.rb -fdoc
+#+END_SRC
+
