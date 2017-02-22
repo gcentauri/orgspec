@@ -5,16 +5,31 @@
 
 * Create Class 
 #+BEGIN_SRC ruby :tangle sapphire.rb
-  class Sapphire
-    attr_reader :worth, :description 
+  require 'pry'
 
-    def initialize
-      @worth = 3000
-      @description = "A beatuiful blue stone"
+  class Sapphire
+    attr_accessor :worth, :description 
+
+    def initialize(size="large")
+      @worth = value(size)
+      @description = "A beautiful blue stone"
     end
-    
+
+    def value(size)
+      case size
+      when "small"
+        worth = 1500
+      when "medium"
+        worth = 2000
+      when "large"
+        worth = 3000
+      end
+      return worth
+    end
   end
 #+END_SRC
+
+#+RESULTS:
 
 
 * write spec file
@@ -34,7 +49,7 @@
     end
 
     it "should take a size argument and adust worth according to a formula" do
-      s = Sapphire.new(:small)
+      s = Sapphire.new("small")
       expect(s.worth).to eql(1500)
     end
   end
@@ -53,7 +68,8 @@ or, cursor on the following line C-x C-e:
 Put the cursor on the block below and C-c C-c
 
 #+BEGIN_SRC sh :results output
-rspec sapphire_spec.rb -fdoc
-:
+  rspec sapphire_spec.rb -fdoc
+  :
 #+END_SRC
+
 
