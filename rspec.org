@@ -52,9 +52,8 @@ or, cursor on the following line C-x C-e:
 
 Put the cursor on the block below and C-c C-c
 
-#+BEGIN_SRC sh
+#+BEGIN_SRC sh :results output
 rspec sapphire_spec.rb -fdoc
+:
 #+END_SRC
-
-#+RESULTS:
 
